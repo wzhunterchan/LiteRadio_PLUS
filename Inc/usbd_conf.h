@@ -73,11 +73,7 @@
 /*---------- -----------*/
 #define USBD_SELF_POWERED     1
 /*---------- -----------*/
-#define USBD_CUSTOMHID_OUTREPORT_BUF_SIZE     64
-/*---------- -----------*/
-#define USBD_CUSTOM_HID_REPORT_DESC_SIZE     108
-/*---------- -----------*/
-#define CUSTOM_HID_FS_BINTERVAL     2
+#define MAX_STATIC_ALLOC_SIZE     512
 
 /****************************************/
 /* #define for FS and HS identification */
