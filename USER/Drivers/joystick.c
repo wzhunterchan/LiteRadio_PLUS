@@ -1,7 +1,7 @@
 #include "joystick.h"
 #include "gimbal.h"
 #include "switches.h"
-//#include "usbd_customhid.h"    //先注释掉
+#include "usbd_cdc.h"
 #include "mixes.h"
 #include "stmflash.h"
 #include "radiolink.h"
@@ -9,6 +9,7 @@
 #include "status.h"
 #include "crsf.h"
 #include "common.h"
+#include "usbd_cdc_if.h" 
 
 static uint32_t joystickDelayTime;
 TaskHandle_t joystickTaskHandle;
@@ -47,7 +48,7 @@ void joystickTask(void *param)
                 checkSum += hidReportData[i]&0x00FF;
             }
             hidReportData[7] = checkSum; 
-            USBD_CUSTOM_HID_SendReport(&hUsbDeviceFS, (uint8_t*) &hidReportData, 8*sizeof(uint16_t));
+            CDC_Transmit_FS((uint8_t*) &hidReportData, 8*sizeof(uint16_t));
         }
         else if (requestType1 == REQUEST_CONIFG_INFO)
         {
@@ -63,7 +64,7 @@ void joystickTask(void *param)
                     checkSum += hidReportData[i]&0x00FF;
                 }
                 hidReportData[7] = checkSum;
-                USBD_CUSTOM_HID_SendReport(&hUsbDeviceFS, (uint8_t*) &hidReportData, 8*sizeof(uint16_t));
+                CDC_Transmit_FS( (uint8_t*) &hidReportData, 8*sizeof(uint16_t));
             }
             else if(requestType2 == 0x01)/*internal_info*/
             {
@@ -81,7 +82,7 @@ void joystickTask(void *param)
                     checkSum += hidReportData[i] & 0x00FF;
                 }
                 hidReportData[7] = checkSum;
-                USBD_CUSTOM_HID_SendReport(&hUsbDeviceFS, (uint8_t*) &hidReportData, 8*sizeof(uint16_t));
+                CDC_Transmit_FS((uint8_t*) &hidReportData, 8*sizeof(uint16_t));
 
             }
             else if(requestType2 == 0x02)/*external_info*/
@@ -180,7 +181,7 @@ void joystickTask(void *param)
                         checkSum += hidReportData[i]&0x00FF;
                     }
                     hidReportData[7] = checkSum;
-                    USBD_CUSTOM_HID_SendReport(&hUsbDeviceFS, (uint8_t*) &hidReportData, 8*sizeof(uint16_t));
+                    CDC_Transmit_FS((uint8_t*) &hidReportData, 8*sizeof(uint16_t));
                 }
                 
             }
@@ -216,7 +217,7 @@ void joystickTask(void *param)
                 checkSum += hidReportData[i]&0x00FF;
             }
             hidReportData[7] = checkSum;
-            USBD_CUSTOM_HID_SendReport(&hUsbDeviceFS, (uint8_t*) &hidReportData, 8*sizeof(uint16_t));
+            CDC_Transmit_FS((uint8_t*) &hidReportData, 8*sizeof(uint16_t));
 
         }
         else if(requestType1 == REQUEST_EXTRA_CONFIG_INFO)
@@ -232,7 +233,7 @@ void joystickTask(void *param)
                 checkSum += hidReportData[i]&0x00FF;
             }
             hidReportData[7] = checkSum;
-            USBD_CUSTOM_HID_SendReport(&hUsbDeviceFS, (uint8_t*) &hidReportData, 8*sizeof(uint16_t));
+            CDC_Transmit_FS((uint8_t*) &hidReportData, 8*sizeof(uint16_t));
         }
         else 
         {
@@ -244,7 +245,7 @@ void joystickTask(void *param)
             hidReportData[5] = map(mixValBuff[5],988,2012,0,2047);
             hidReportData[6] = map(mixValBuff[6],988,2012,0,2047);
             hidReportData[7] = map(mixValBuff[7],988,2012,0,2047);
-            USBD_CUSTOM_HID_SendReport(&hUsbDeviceFS, (uint8_t*) &hidReportData, 8*sizeof(uint16_t));
+            CDC_Transmit_FS((uint8_t*) &hidReportData, 8*sizeof(uint16_t));
         }
         checkSum = 0;        
 

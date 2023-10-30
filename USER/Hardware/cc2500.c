@@ -287,11 +287,11 @@ uint16_t CC2500_Process(uint16_t* controlDataBuff)
 
 void CC2500_PA_TXEN()
 {
-    HAL_GPIO_WritePin(GPIOA, SX1280_TXRX_EN_Pin, GPIO_PIN_SET);
+    HAL_GPIO_WritePin(GPIOA, PA_TXRX_EN_Pin, GPIO_PIN_SET);
 }
 
 
 void CC2500_PA_RXEN()
 {
-    HAL_GPIO_WritePin(GPIOA, SX1280_TXRX_EN_Pin, GPIO_PIN_RESET);
+    HAL_GPIO_WritePin(GPIOA, PA_TXRX_EN_Pin, GPIO_PIN_RESET);
 }

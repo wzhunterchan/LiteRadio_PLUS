@@ -28,7 +28,7 @@
 #endif
 
 /* Includes ------------------------------------------------------------------*/
-//#include "usbd_customhid.h"        //先注释掉
+#include "usbd_customhid.h"
 
 /* USER CODE BEGIN INCLUDE */
 
@@ -89,7 +89,7 @@
   */
 
 /** CUSTOMHID Interface callback. */
-//extern USBD_CUSTOM_HID_ItfTypeDef USBD_CustomHID_fops_FS;    //先注释掉
+extern USBD_CUSTOM_HID_ItfTypeDef USBD_CustomHID_fops_FS;
 
 /* USER CODE BEGIN EXPORTED_VARIABLES */
 
