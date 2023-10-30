@@ -1,7 +1,7 @@
 #include "joystick.h"
 #include "gimbal.h"
 #include "switches.h"
-#include "usbd_customhid.h"
+//#include "usbd_customhid.h"    //先注释掉
 #include "mixes.h"
 #include "stmflash.h"
 #include "radiolink.h"
