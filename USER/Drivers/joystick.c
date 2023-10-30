@@ -9,7 +9,7 @@
 #include "status.h"
 #include "crsf.h"
 #include "common.h"
-#include "usbd_cdc_if.h" 
+#include "usbd_cdc_if.h"    //增加以获取CDC收发函数
 
 static uint32_t joystickDelayTime;
 TaskHandle_t joystickTaskHandle;

@@ -140,7 +140,7 @@ void MX_GPIO_Init(void)
 #ifdef LiteRadio_Plus_CC2500
 void CC2500_GPIO_Disable(void)
 {
-    HAL_GPIO_DeInit(GPIOA,PA_TXRX_EN_Pin);
+    HAL_GPIO_DeInit(GPIOA,SX1280_TXRX_EN_Pin);
     HAL_GPIO_DeInit(GPIOA,SX1280_RST_Pin);
     HAL_GPIO_DeInit(GPIOB,SX1280_BUSY_Pin);
     HAL_GPIO_DeInit(GPIOB,SX1280_DIO1_Pin);
