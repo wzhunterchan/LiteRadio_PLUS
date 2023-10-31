@@ -1,7 +1,8 @@
 #include "joystick.h"
 #include "gimbal.h"
 #include "switches.h"
-#include "usbd_cdc.h"
+//#include "usbd_customhid.h"
+#include "usbd_cdc_if.h"
 #include "mixes.h"
 #include "stmflash.h"
 #include "radiolink.h"
@@ -9,7 +10,6 @@
 #include "status.h"
 #include "crsf.h"
 #include "common.h"
-#include "usbd_cdc_if.h"    //增加以获取CDC收发函数
 
 static uint32_t joystickDelayTime;
 TaskHandle_t joystickTaskHandle;
@@ -64,7 +64,7 @@ void joystickTask(void *param)
                     checkSum += hidReportData[i]&0x00FF;
                 }
                 hidReportData[7] = checkSum;
-                CDC_Transmit_FS( (uint8_t*) &hidReportData, 8*sizeof(uint16_t));
+                CDC_Transmit_FS((uint8_t*) &hidReportData, 8*sizeof(uint16_t));
             }
             else if(requestType2 == 0x01)/*internal_info*/
             {

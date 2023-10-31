@@ -103,6 +103,7 @@ void Error_Handler(void);
 #define SWD_GPIO_Port GPIOB
 #define SWC_L_Pin GPIO_PIN_9
 #define SWC_L_GPIO_Port GPIOB
+
 /* USER CODE BEGIN Private defines */
 #define THROTTLE_ENABLED				1					// 1 for enabled, 0 for disabled
 #define RUDDER_ENABLED					1					// 1 for enabled, 0 for disabled
@@ -122,5 +123,3 @@ void Error_Handler(void);
 #endif
 
 #endif /* __MAIN_H */
-
-/************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

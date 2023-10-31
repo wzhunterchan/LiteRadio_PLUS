@@ -4,7 +4,6 @@
 #include "spi.h"
 #include "gpio.h"
 
-
 void SX1280_HalReadRegisters(uint16_t address, uint8_t *buffer, uint16_t size)
 {
     uint8_t halTxBuffer[size + 4];
@@ -186,14 +185,14 @@ void SX1280_HalReadBuffer(uint8_t offset, volatile uint8_t *buffer, uint8_t size
 void SX1280Hal_TXenable()
 {
     SX1280.InterruptAssignment = SX1280_INTERRUPT_TX_DONE;
-    HAL_GPIO_WritePin(GPIOA, SX1280_TXRX_EN_Pin, GPIO_PIN_SET);//PA_TXRX_EN_Pin 改 SX1280_TXRX_EN_Pin
+    HAL_GPIO_WritePin(GPIOA, SX1280_TXRX_EN_Pin, GPIO_PIN_SET);
 }
 
 
 void SX1280Hal_RXenable()
 {
     SX1280.InterruptAssignment = SX1280_INTERRUPT_RX_DONE;
-    HAL_GPIO_WritePin(GPIOA, SX1280_TXRX_EN_Pin, GPIO_PIN_RESET);//PA_TXRX_EN_Pin 改 SX1280_TXRX_EN_Pin
+    HAL_GPIO_WritePin(GPIOA, SX1280_TXRX_EN_Pin, GPIO_PIN_RESET);
 }
 
 
